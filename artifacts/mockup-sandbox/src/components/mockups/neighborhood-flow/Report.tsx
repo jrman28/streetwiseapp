@@ -39,7 +39,7 @@ export function Report() {
         <div className="px-4 pb-6 flex flex-col gap-3">
 
           {/* Schools */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-2" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-2" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex items-center gap-2 mb-4">
               <BookOpen size={16} color="var(--nb-accent)" />
               <h2 className="font-semibold text-sm" style={{ color: 'var(--nb-text)' }}>Schools</h2>
@@ -67,7 +67,7 @@ export function Report() {
           </div>
 
           {/* Top Dining */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-3" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-3" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex items-center gap-2 mb-4">
               <UtensilsCrossed size={16} color="var(--nb-text)" />
               <h2 className="font-semibold text-sm" style={{ color: 'var(--nb-text)' }}>Top Dining</h2>
@@ -90,7 +90,7 @@ export function Report() {
           </div>
 
           {/* Walkability */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-4" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-4" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex items-center gap-2 mb-4">
               <Footprints size={16} color="var(--nb-text)" />
               <h2 className="font-semibold text-sm" style={{ color: 'var(--nb-text)' }}>Walkability</h2>
@@ -115,7 +115,7 @@ export function Report() {
           </div>
 
           {/* Market Snapshot */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-4" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-5" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp size={16} color="var(--nb-text)" />
               <h2 className="font-semibold text-sm" style={{ color: 'var(--nb-text)' }}>Market Snapshot</h2>
@@ -140,7 +140,7 @@ export function Report() {
           </div>
 
           {/* What Residents Say */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-5" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-6" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center gap-2">
                 <MessageCircle size={16} color="var(--nb-text)" />
@@ -173,13 +173,13 @@ export function Report() {
           </div>
 
           {/* Crime & Safety */}
-          <div className="p-5 rounded-xl shadow-sm stagger-in stagger-6" style={{ backgroundColor: 'var(--nb-surface)' }}>
+          <div className="p-5 rounded-xl stagger-in stagger-6" style={{ backgroundColor: 'var(--nb-surface)', boxShadow: '0 1px 2px rgba(26,24,20,0.06), 0 4px 16px rgba(26,24,20,0.04)' }}>
             <div className="flex items-center gap-2 mb-3">
               <Shield size={16} color="var(--nb-text)" />
               <h2 className="font-semibold text-sm" style={{ color: 'var(--nb-text)' }}>Crime & Safety</h2>
             </div>
             <div className="flex justify-between items-center">
-              <p className="text-sm leading-relaxed" style={{ color: 'var(--nb-muted)', maxWidth: '60%' }}>Crime rate 18% below city average. Violent crime: Low.</p>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--nb-text)', maxWidth: '60%' }}>Crime rate 18% below city average. Violent crime: Low.</p>
               <div className="flex flex-col items-center gap-1">
                 <div className="flex gap-1">
                   <div className="w-5 h-2.5 rounded-sm" style={{ backgroundColor: 'var(--nb-success)' }} />
@@ -197,8 +197,8 @@ export function Report() {
       {/* Always-visible Footer — outside the scroll area */}
       <div className="shrink-0 px-4 py-3 border-t" style={{ borderColor: 'var(--nb-border)', backgroundColor: 'var(--nb-bg)' }}>
         <button
-          className="w-full h-12 rounded-xl font-semibold text-white shadow-sm transition-transform active:scale-[0.98]"
-          style={{ backgroundColor: 'var(--nb-accent)' }}
+          className="w-full h-12 rounded-xl font-semibold text-white transition-transform active:scale-[0.96]"
+          style={{ backgroundColor: 'var(--nb-accent)', boxShadow: '0 1px 3px rgba(26,24,20,0.12), 0 4px 12px rgba(217,119,6,0.25)' }}
         >
           Email this report
         </button>
