@@ -24,6 +24,12 @@ uri = "file://attached_assets/streetwise-icon-alt.png"
 type = "image"
 title = "streetwise icon alt concept"
 
+[[generated]]
+id = "WaZhikg88OGf7BtxZ4p9g"
+uri = "file://attached_assets/streetwise-icon-nobg.png"
+type = "image"
+title = "streetwise icon transparent"
+
 [[outputs]]
 id = "lt8hAHMPVzs9WSN2SraHb"
 uri = "file://artifacts/streetwise-video/public/images/home_interior.jpg"
