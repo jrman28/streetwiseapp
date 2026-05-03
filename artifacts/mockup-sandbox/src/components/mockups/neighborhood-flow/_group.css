@@ -1,49 +1,137 @@
+/**
+ * Streetwise Design System — "Notion Beige"
+ * ==========================================
+ * Shared CSS custom properties (design tokens) and keyframe animations
+ * used by all neighborhood-flow screens:
+ *   Landing · Generating · Report · Confirm · Settings · Login
+ *
+ * IMPORTING
+ * ---------
+ * Every screen component imports this file directly:
+ *   import './_group.css';
+ * Social asset components import via relative path:
+ *   import '../neighborhood-flow/_group.css';
+ *
+ * DESIGN TOKEN PHILOSOPHY
+ * -----------------------
+ * All colors are named semantically, not by value. This means swapping
+ * the entire color palette (e.g. for a dark mode or white-label version)
+ * requires changing only the :root block below — zero component edits.
+ *
+ *   DO:    color: var(--nb-accent)
+ *   DON'T: color: #D97706
+ *
+ * ANIMATION STRATEGY
+ * ------------------
+ * Per principle #4 from make-interfaces-feel-better:
+ *   - CSS KEYFRAMES for staged, one-shot sequences (stagger-in, draw-check,
+ *     progress-fill, pulse). These play once on mount and don't need to
+ *     be interrupted.
+ *   - CSS TRANSITIONS for interactive state changes (button press, hover
+ *     background, input focus ring). Applied directly on the element so
+ *     they reverse smoothly when the interaction ends.
+ *
+ * STAGGER SYSTEM
+ * --------------
+ * Usage: <div className="stagger-in stagger-3">
+ *
+ * .stagger-in sets opacity:0 + kicks off the fade-up animation.
+ * .stagger-N adds a delay so elements reveal top-to-bottom sequentially.
+ * Combine: first visible element = stagger-1, last = stagger-6.
+ *
+ * Per principle #5:
+ *   - translateY(10px) — small fixed rise, not full-height slide
+ *   - 0.5s duration with spring easing (cubic-bezier 0.16, 1, 0.3, 1)
+ *   - Each step is ~80ms apart — fast enough to feel snappy, slow enough
+ *     to be perceived as intentional
+ */
+
+/* ─── Design tokens ─── */
 :root {
-  --nb-bg: #F7F5F0;
-  --nb-surface: #FFFEF9;
-  --nb-surface-hover: #F1EFE9;
-  --nb-border: #E3E2DE;
-  --nb-text: #1A1917;
-  --nb-muted: #787774;
-  --nb-accent: #D97706;
-  --nb-accent-light: #FEF3C7;
-  --nb-success: #059669;
+  /* Backgrounds */
+  --nb-bg:           #F7F5F0;   /* Parchment — main page background */
+  --nb-surface:      #FFFEF9;   /* Card surface — cooler/lighter than bg */
+  --nb-surface-hover:#F1EFE9;   /* Card hover state — slightly darker */
+
+  /* Text */
+  --nb-text:         #1A1917;   /* Near-black warm — primary text */
+  --nb-muted:        #787774;   /* Warm grey — labels, captions, placeholders */
+
+  /* Accent — Amber #D97706 */
+  --nb-accent:       #D97706;   /* CTAs, progress bars, score highlights */
+  --nb-accent-light: #FEF3C7;   /* Amber tint — badge/chip backgrounds */
+
+  /* Semantic */
+  --nb-border:       #E3E2DE;   /* Dividers, input borders, progress track */
+  --nb-success:      #059669;   /* Emerald — YoY growth, low crime, Done checkmark */
 }
 
+/* ─── Stagger entrance animation ─── */
+/*
+ * The keyframe itself: opacity 0→1 + translateY 10px→0.
+ * Spring easing (0.16, 1, 0.3, 1) gives a satisfying "snap to place"
+ * feel — similar to CSS spring() but browser-compatible.
+ *
+ * Note: `forwards` fill mode keeps the element at opacity:1 after
+ * the animation completes. Without it, the element would flicker back
+ * to opacity:0 on animation end.
+ */
 @keyframes stagger-fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0%   { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 .stagger-in {
-  opacity: 0;
+  opacity: 0;                   /* Hidden until animation fires */
   animation: stagger-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.stagger-1 { animation-delay: 0.1s; }
+/*
+ * Delay ladder — each step is 80ms after the previous.
+ * Use stagger-1 for the topmost/first element in a section,
+ * stagger-6 for the last. Don't skip numbers (gaps feel broken).
+ */
+.stagger-1 { animation-delay: 0.10s; }
 .stagger-2 { animation-delay: 0.18s; }
 .stagger-3 { animation-delay: 0.26s; }
 .stagger-4 { animation-delay: 0.34s; }
 .stagger-5 { animation-delay: 0.42s; }
-.stagger-6 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.50s; }
 
+/* ─── Scanning pulse dot ─── */
+/*
+ * The small orange dot next to "Scanning…" rows on the Generating screen.
+ * Oscillates between 40% and 100% opacity on a 1.5s loop.
+ *
+ * Intentionally slower than a typical spinner (which would be ~0.8s).
+ * A slower pulse signals "working steadily" vs. "hurrying" — keeps the
+ * agent (and their client) feeling calm while data loads.
+ */
 @keyframes pulse-dot {
   0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  50%       { opacity: 1; }
 }
 
 .animate-pulse-dot {
   animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
+/* ─── Progress bar fill ─── */
+/*
+ * Animates the progress bar on the Generating screen from 0% → 65%.
+ * 65% represents the static "mock" state (Reddit + MLS still scanning).
+ *
+ * In the real app, this bar's width will be driven reactively by a
+ * Convex query watching the report document's source completion flags —
+ * each source sets a boolean when done, and the bar reflects the count.
+ * At that point, this CSS animation is replaced by a React state binding.
+ *
+ * The 2s duration is intentional: slightly slower than the stagger
+ * animations so the bar feels like it's genuinely "working" not just
+ * snapping to a predetermined value.
+ */
 @keyframes progress-fill {
-  0% { width: 0%; }
+  0%   { width: 0%; }
   100% { width: 65%; }
 }
 
@@ -51,13 +139,23 @@
   animation: progress-fill 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ─── SVG checkmark draw animation ─── */
+/*
+ * Used on the Confirm screen's success icon <polyline>.
+ * Animates stroke-dashoffset from 100 (fully hidden) to 0 (fully drawn),
+ * giving a "pen writing" effect for the checkmark stroke.
+ *
+ * Requires the target <polyline> to have:
+ *   stroke-dasharray: 100    (total path length)
+ *   stroke-dashoffset: 100   (start fully hidden)
+ * Both are set by the .animate-draw-check class below.
+ *
+ * Per principle #6 (Icon Transitions): the spring easing makes the
+ * stroke feel like it snaps to completion rather than sliding in linearly.
+ */
 @keyframes draw-check {
-  0% {
-    stroke-dashoffset: 100;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
+  0%   { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
 }
 
 .animate-draw-check {
@@ -66,19 +164,60 @@
   animation: draw-check 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ─── Page background heartbeat ─── */
+/*
+ * Applied to the Generating screen root div while data is being fetched.
+ * The background shifts between the parchment (#F7F5F0) and a very
+ * slightly darker variant (#F0EFEA) on a 4-second loop.
+ *
+ * This is deliberately subtle — barely perceptible. Its purpose is to
+ * signal "live activity" at a peripheral level without drawing attention
+ * away from the source rows, which are the primary focus.
+ *
+ * In the real app, this animation can be driven by a CSS class toggle
+ * (add when status="generating", remove when status="ready") rather
+ * than always-on, to avoid unnecessary animation on static states.
+ */
 @keyframes subtle-pulse-bg {
   0%, 100% { background-color: var(--nb-bg); }
-  50% { background-color: #F0EFEA; }
+  50%       { background-color: #F0EFEA; }
 }
 
 .animate-subtle-pulse-bg {
   animation: subtle-pulse-bg 4s ease-in-out infinite;
 }
 
+/* ─── Typography helper ─── */
+/*
+ * .font-playfair switches to Playfair Display (serif) for editorial headings.
+ * Loaded from Google Fonts in the mockup sandbox's index.html.
+ *
+ * In production, self-host the font files via @font-face to avoid
+ * the Google Fonts request (privacy + performance).
+ *
+ * Used on: zip code badge (Generating), report title, "Report sent!" h1,
+ * waitlist headline, all social asset copy, score circles (Walkability).
+ */
 .font-playfair {
   font-family: 'Playfair Display', serif;
 }
 
+/* ─── Root container ─── */
+/*
+ * .nb-container is the root class for screens that use the old pattern
+ * (max-w-md centered layout). Newer screens (Report, Confirm, Settings,
+ * Login) use inline style={{ height: '100dvh', display: 'flex' }} directly
+ * to gain full control over the pinned-header + scrollable-content +
+ * pinned-footer layout without fighting nb-container's min-height.
+ *
+ * Per principle #13 (Crisp Text on macOS):
+ *   -webkit-font-smoothing: antialiased renders Inter thinner and crisper
+ *   on Retina displays. The -moz variant covers Firefox on macOS.
+ *   Both are no-ops on Windows/Linux where subpixel AA is preferred.
+ *
+ * 100dvh (dynamic viewport height) accounts for iOS Safari's collapsing
+ * address bar — regular 100vh can cause content to hide behind it.
+ */
 .nb-container {
   min-height: 100dvh;
   background-color: var(--nb-bg);
