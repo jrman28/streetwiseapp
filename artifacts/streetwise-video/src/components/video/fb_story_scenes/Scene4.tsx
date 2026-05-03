@@ -11,13 +11,14 @@ export function Scene4() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative z-10 flex flex-col items-center justify-center text-[#F7F5F0] w-[80vw] h-[80vh]">
-        <motion.img 
-          src={iconPng}
-          className="w-32 h-32 mb-6 filter brightness-0 invert"
+        <motion.div
+          className="w-32 h-32 mb-6 bg-[#F7F5F0] rounded-3xl flex items-center justify-center shadow-2xl"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: 'spring', stiffness: 250, damping: 20, delay: 0.4 }}
-        />
+        >
+          <img src={iconPng} className="w-24 h-24" alt="Streetwise icon" />
+        </motion.div>
         <motion.h2 
           className="text-[10vw] font-display font-bold mb-4"
           initial={{ opacity: 0, y: 20 }}
