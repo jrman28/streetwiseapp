@@ -1,55 +1,129 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { MapPin, RotateCcw, Zap } from 'lucide-react';
 import './_group.css';
 
 export function Confirm() {
   return (
-    <div className="nb-container flex flex-col p-6 w-full max-w-md mx-auto justify-center">
-      <div className="flex flex-col items-center text-center stagger-in stagger-1">
-        <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 bg-emerald-100">
-          <svg className="w-10 h-10 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <div
+      style={{
+        height: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: 'var(--nb-bg)',
+        WebkitFontSmoothing: 'antialiased',
+        fontFamily: "'Inter', sans-serif",
+        color: 'var(--nb-text)',
+      }}
+    >
+      {/* Header wordmark */}
+      <div className="flex items-center gap-1.5 px-6 py-5 shrink-0">
+        <MapPin size={14} strokeWidth={2.5} color="var(--nb-accent)" />
+        <span className="font-playfair text-lg font-bold leading-none" style={{ color: 'var(--nb-text)' }}>Streetwise</span>
+      </div>
+
+      {/* Centered content — grows to fill space */}
+      <div className="flex-1 flex flex-col items-center justify-center px-6 text-center stagger-in stagger-1">
+
+        {/* Success icon — layered shadow, concentric radius */}
+        <div
+          className="flex items-center justify-center mb-6"
+          style={{
+            width: 80,
+            height: 80,
+            borderRadius: 24,
+            backgroundColor: '#D1FAE5',
+            boxShadow: '0 2px 4px rgba(5,150,105,0.1), 0 8px 24px rgba(5,150,105,0.15)',
+          }}
+        >
+          <svg
+            width={36}
+            height={36}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#059669"
+            strokeWidth={2.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="20 6 9 17 4 12" className="animate-draw-check" />
           </svg>
         </div>
 
-        <h1 
-          className="font-playfair text-[40px] leading-tight mb-3" 
+        <h1
+          className="font-playfair text-[38px] leading-tight mb-3"
           style={{ color: 'var(--nb-text)', textWrap: 'balance' }}
         >
           Report sent!
         </h1>
-        
-        <p 
-          className="text-base mb-10 px-4" 
-          style={{ color: 'var(--nb-muted)', textWrap: 'balance' }}
+
+        <p
+          className="text-sm mb-10 max-w-[260px]"
+          style={{ color: 'var(--nb-muted)', textWrap: 'pretty', lineHeight: 1.6 }}
         >
           Check sarah@kwrealty.com — should arrive in under a minute.
         </p>
 
-        <div className="w-full border-t mb-10" style={{ borderColor: 'var(--nb-border)' }}></div>
+        <div className="w-full border-t mb-8" style={{ borderColor: 'var(--nb-border)' }} />
 
-        <button 
-          className="w-full h-14 rounded-xl font-medium border-2 mb-6 transition-all hover:bg-black/5 active:scale-[0.98]"
-          style={{ 
+        {/* Generate another — ghost button, hit area ≥ 44px */}
+        <button
+          className="w-full flex items-center justify-center gap-2 border font-medium text-sm transition-[transform,background-color] duration-150 active:scale-[0.96] mb-3"
+          style={{
+            height: 48,
+            borderRadius: 14,
             borderColor: 'var(--nb-border)',
-            color: 'var(--nb-text)'
+            color: 'var(--nb-text)',
+            backgroundColor: 'transparent',
           }}
         >
+          <RotateCcw size={15} />
           Generate another report
         </button>
 
-        <div className="w-full p-5 rounded-xl text-left shadow-sm stagger-in stagger-2" style={{ backgroundColor: 'var(--nb-accent-light)' }}>
-          <h3 className="font-semibold mb-1" style={{ color: 'var(--nb-text)' }}>Want weekly auto-refreshes for active listings?</h3>
-          <p className="text-sm mb-4" style={{ color: 'var(--nb-accent)' }}>Keep your clients updated automatically.</p>
-          <button className="px-4 py-2 rounded-lg font-medium text-sm text-white shadow-sm transition-transform hover:scale-105 active:scale-95" style={{ backgroundColor: 'var(--nb-accent)' }}>
-            Upgrade to Pro — $39/mo
+        {/* Upsell card — concentric radius: card rounded-[18px], inner button needs radius = 18-16=2px → use rounded-sm */}
+        <div
+          className="w-full text-left p-4 stagger-in stagger-2"
+          style={{
+            backgroundColor: 'var(--nb-accent-light)',
+            borderRadius: 18,
+            boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(217,119,6,0.08)',
+          }}
+        >
+          <div className="flex items-start gap-3 mb-3">
+            <div
+              className="flex items-center justify-center shrink-0 mt-0.5"
+              style={{ width: 32, height: 32, borderRadius: 8, backgroundColor: 'var(--nb-accent)', color: 'white' }}
+            >
+              <Zap size={15} />
+            </div>
+            <div>
+              <h3 className="font-semibold text-sm leading-tight mb-1" style={{ color: 'var(--nb-text)' }}>
+                Weekly auto-refreshes for active listings
+              </h3>
+              <p className="text-xs leading-relaxed" style={{ color: 'var(--nb-accent)', textWrap: 'pretty' }}>
+                Keep your clients updated automatically.
+              </p>
+            </div>
+          </div>
+          {/* Concentric: card is rounded-[18px], padding is p-4 (16px) → inner radius = 18-16 = 2px */}
+          <button
+            className="w-full font-semibold text-sm text-white transition-[transform,opacity] duration-150 active:scale-[0.96]"
+            style={{
+              height: 44,
+              borderRadius: 6,
+              backgroundColor: 'var(--nb-accent)',
+              boxShadow: '0 1px 2px rgba(0,0,0,0.1), 0 2px 8px rgba(217,119,6,0.3)',
+            }}
+          >
+            Upgrade to Pro — $29/mo
           </button>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-0 right-0 text-center stagger-in stagger-3">
+      {/* Footer — outside scroll area, always visible */}
+      <div className="shrink-0 pb-5 text-center">
         <span className="text-[11px]" style={{ color: 'var(--nb-muted)' }}>
-          Powered by Neighborhood Brief · yourproduct.com
+          Streetwise · getstreetwise.com
         </span>
       </div>
     </div>

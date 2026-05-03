@@ -1,0 +1,68 @@
+CLI Printing Press
+CI Golden Release Go License
+
+Nothing is more valuable than time and money. In a world of AI agents, that's speed and token spend. A well-designed CLI is muscle memory for an agent: no hunting through docs, no wrong turns, no wasted tokens. We built the Printing Press to print the best CLIs in the world for agents.
+
+It reads the official API docs, studies every popular community CLI and MCP server, sniffs the web for the APIs nobody published (think Google Flights or Dominos), and applies the power-user playbook Peter Steinberger proved with discrawl and gogcli - local SQLite, compound commands, agent-native flags. It fuses all of that and prints a token-efficient Go CLI plus a Claude Code skill plus an MCP server for any API or any website.
+
+Three CLIs printed by the press, installable today:
+
+ESPN (sniffed, no official API). "Tonight's NBA playoff games with live score, series state, each team's leading scorer's stat line, and any injury or lineup news from the last 24 hours." Returns everything in one call.
+flight-goat (Kayak nonstop search plus sniffed Google Flights). "Non-stop flights over 8 hours from Seattle for 4 people, Dec 24 to Jan 1, cheapest first." Two sources stitched into one query.
+linear-pp-cli (50ms against a local SQLite mirror). "Every blocked issue whose blocker has been stuck for a week." Compound queries the API can't answer.
+Browse the full catalog of printed CLIs at printingpress.dev or in the Printing Press Library. 24 CLIs across 17 categories, 17 with full MCP servers.
+
+Install
+The Printing Press has two parts, and you need both:
+
+The binary (printing-press) — the engine. Does research, generation, verification, scoring.
+The Claude Code plugin — adds the /printing-press slash command. This is your primary interface; the skill drives the binary behind the scenes.
+The plugin alone has nothing to call; the binary alone works but skips the curated agent loop.
+
+Prerequisites: Go 1.22+ and Claude Code.
+
+1. Install the binary
+go install github.com/mvanhorn/cli-printing-press/v3/cmd/printing-press@latest
+Verify: printing-press --version.
+
+If you skip this step, the plugin will run go install for you on first use (assuming Go is on your PATH). Doing it upfront avoids a slow first run. If go install fails with 410 Gone or an auth error, see Troubleshooting.
+
+2. Install the plugin — pick one path
+Both paths give you the /printing-press slash command. They differ in how skills are kept up to date and whether parallel runs are easy.
+
+Option A — Clone and run (recommended for active users)
+Loads the plugin directly from a local clone of this repo. git pull is your update mechanism, so you always have the latest skills with no plugin-marketplace lag. Add -w to start the session in a fresh git worktree — handy for printing multiple CLIs in parallel without runs stomping on each other.
+
+git clone https://github.com/mvanhorn/cli-printing-press.git
+cd cli-printing-press
+claude --plugin-dir .          # load this repo's skills directly
+claude --plugin-dir . -w       # ...in a new worktree (parallel runs)
+Update with git pull whenever you want fresh skills. The binary from step 1 still does the heavy lifting; --plugin-dir . only changes where the plugin loads from.
+
+Option B — Plugin marketplace (one-shot, auto-updated by Claude)
+Stable releases, kept up to date by Claude's plugin update mechanism. Run inside Claude Code:
+
+/plugin marketplace add mvanhorn/cli-printing-press
+/plugin install cli-printing-press@cli-printing-press
+Verify (either path): type /printing-press in Claude Code and confirm the slash command appears.
+
+Optional: pre-built CLI library
+To browse and install pre-built CLIs from the Printing Press Library catalog (24 CLIs across 17 categories), add a second plugin in Claude Code:
+
+/plugin marketplace add mvanhorn/printing-press-library
+/plugin install printing-press-library@printing-press-library
+This adds the /ppl slash command for browsing and installing CLIs from the public catalog.
+
+Quick start
+/printing-press Notion                               # Print a CLI for an API by name
+/printing-press https://postman.com/explore         # ...or point it at a website (no spec needed)
+/printing-press is the slash command from the Claude Code plugin. It drives the printing-press binary you installed — research, generation, scoring, and shipcheck all run through the binary. Two parts, one workflow.
+
+One command. Lean loop. Produces a Go CLI plus an MCP server that absorbs every feature from every competing tool, then transcends with compound use cases only possible with local data. REST, GraphQL, or browser-sniffed traffic. No OpenAPI spec required.
+
+Each run produces two binaries (<api>-pp-cli plus <api>-pp-mcp), research documents, verification proofs, and a Quality Score.
+
+By default, active and published output are separated:
+
+Active managed runs work in ~/printing-press/.runstate/<scope>/runs/<run-id>/working/<api>-pp-cli
+Published CLIs go to ~/printing-press/libra...
