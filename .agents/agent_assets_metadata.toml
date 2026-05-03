@@ -30,6 +30,18 @@ uri = "file://attached_assets/streetwise-icon-nobg.png"
 type = "image"
 title = "streetwise icon transparent"
 
+[[generated]]
+id = "2PQTUqiFGRsKy0DoAacsO"
+uri = "file://artifacts/streetwise-video/public/images/fb_ad_bg.png"
+type = "image"
+title = "Aerial city neighborhood image"
+
+[[generated]]
+id = "Q-QZAJQvCz4Sy6mQsYKlq"
+uri = "file://artifacts/streetwise-video/public/images/fb_story_bg.png"
+type = "image"
+title = "Warm suburban street scene"
+
 [[outputs]]
 id = "lt8hAHMPVzs9WSN2SraHb"
 uri = "file://artifacts/streetwise-video/public/images/home_interior.jpg"
