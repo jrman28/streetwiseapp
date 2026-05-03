@@ -1,0 +1,19 @@
+uploads = []
+
+[[generated]]
+id = "CGxbXpgJrGioEAxCfb2Y8"
+uri = "file://artifacts/streetwise-video/public/images/map_ui.png"
+type = "image"
+title = "Minimalist map UI element"
+
+[[generated]]
+id = "HrsKAj72_9Y8R5ur2ZoyZ"
+uri = "file://artifacts/streetwise-video/public/images/charts_ui.png"
+type = "image"
+title = "Data charts abstract"
+
+[[outputs]]
+id = "lt8hAHMPVzs9WSN2SraHb"
+uri = "file://artifacts/streetwise-video/public/images/home_interior.jpg"
+type = "image"
+title = "luxury modern interior home living room with warm natural light"
