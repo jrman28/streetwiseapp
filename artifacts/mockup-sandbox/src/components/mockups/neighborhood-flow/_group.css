@@ -1,0 +1,89 @@
+:root {
+  --nb-bg: #F7F5F0;
+  --nb-surface: #FFFEF9;
+  --nb-surface-hover: #F1EFE9;
+  --nb-border: #E3E2DE;
+  --nb-text: #1A1917;
+  --nb-muted: #787774;
+  --nb-accent: #D97706;
+  --nb-accent-light: #FEF3C7;
+  --nb-success: #059669;
+}
+
+@keyframes stagger-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-in {
+  opacity: 0;
+  animation: stagger-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.18s; }
+.stagger-3 { animation-delay: 0.26s; }
+.stagger-4 { animation-delay: 0.34s; }
+.stagger-5 { animation-delay: 0.42s; }
+.stagger-6 { animation-delay: 0.5s; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-fill {
+  0% { width: 0%; }
+  100% { width: 65%; }
+}
+
+.animate-progress-fill {
+  animation: progress-fill 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes draw-check {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-check {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-check 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes subtle-pulse-bg {
+  0%, 100% { background-color: var(--nb-bg); }
+  50% { background-color: #F0EFEA; }
+}
+
+.animate-subtle-pulse-bg {
+  animation: subtle-pulse-bg 4s ease-in-out infinite;
+}
+
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.nb-container {
+  min-height: 100dvh;
+  background-color: var(--nb-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter', sans-serif;
+  color: var(--nb-text);
+}
