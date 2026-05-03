@@ -39,7 +39,7 @@ export function Scene1() {
         {phase >= 2 && (
           <motion.img 
             src={iconPng}
-            className="w-48 h-48 filter brightness-0 invert"
+            className="w-48 h-48"
             initial={{ scale: 0.5, opacity: 0, rotate: -20 }}
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}

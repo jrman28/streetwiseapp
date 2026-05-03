@@ -11,14 +11,14 @@ export function Scene5() {
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="relative z-10 flex flex-col items-center text-center text-[#F7F5F0]">
-        <motion.div
-          className="w-40 h-40 mb-8 bg-[#F7F5F0] rounded-3xl flex items-center justify-center shadow-2xl"
+        <motion.img
+          src={iconPng}
+          className="w-40 h-40 mb-8"
+          alt="Streetwise icon"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <img src={iconPng} className="w-32 h-32" alt="Streetwise icon" />
-        </motion.div>
+        />
         <motion.h2 
           className="text-[4vw] font-display font-bold"
           initial={{ opacity: 0, y: 20 }}
