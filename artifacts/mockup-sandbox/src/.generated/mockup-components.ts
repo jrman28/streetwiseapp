@@ -7,9 +7,9 @@ export const modules: ModuleMap = {
   "./components/mockups/neighborhood-flow/Login.tsx": () => import("../components/mockups/neighborhood-flow/Login.tsx"),
   "./components/mockups/neighborhood-flow/Report.tsx": () => import("../components/mockups/neighborhood-flow/Report.tsx"),
   "./components/mockups/neighborhood-flow/Settings.tsx": () => import("../components/mockups/neighborhood-flow/Settings.tsx"),
-  "./components/mockups/streetwise-waitlist/Waitlist.tsx": () => import("../components/mockups/streetwise-waitlist/Waitlist.tsx"),
   "./components/mockups/streetwise-social/Instagram.tsx": () => import("../components/mockups/streetwise-social/Instagram.tsx"),
   "./components/mockups/streetwise-social/LinkedIn.tsx": () => import("../components/mockups/streetwise-social/LinkedIn.tsx"),
   "./components/mockups/streetwise-social/Story.tsx": () => import("../components/mockups/streetwise-social/Story.tsx"),
-  "./components/mockups/streetwise-social/TwitterCard.tsx": () => import("../components/mockups/streetwise-social/TwitterCard.tsx")
+  "./components/mockups/streetwise-social/TwitterCard.tsx": () => import("../components/mockups/streetwise-social/TwitterCard.tsx"),
+  "./components/mockups/streetwise-waitlist/Waitlist.tsx": () => import("../components/mockups/streetwise-waitlist/Waitlist.tsx")
 };
