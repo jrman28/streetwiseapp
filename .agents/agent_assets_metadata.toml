@@ -12,8 +12,26 @@ uri = "file://artifacts/streetwise-video/public/images/charts_ui.png"
 type = "image"
 title = "Data charts abstract"
 
+[[generated]]
+id = "N6DX_82ZshfVJk5PRaRYE"
+uri = "file://attached_assets/streetwise-icon-1024.png"
+type = "image"
+title = "streetwise app icon 1024"
+
+[[generated]]
+id = "88Wqld4SHltzcJAQ2Oq_T"
+uri = "file://attached_assets/streetwise-icon-alt.png"
+type = "image"
+title = "streetwise icon alt concept"
+
 [[outputs]]
 id = "lt8hAHMPVzs9WSN2SraHb"
 uri = "file://artifacts/streetwise-video/public/images/home_interior.jpg"
 type = "image"
 title = "luxury modern interior home living room with warm natural light"
+
+[[outputs]]
+id = "AEOuLJQR0f2VjAEUSu-Oc"
+uri = "file://attached_assets/streetwise-icon-1024.png"
+type = "image"
+title = "Streetwise App Icon — 1024×1024"
